@@ -9,8 +9,7 @@ async function fetchNotes() {
     headers: new Headers({
       apikey: process.env.apikey as string,
     }),
-    cache: 'force-cache',
-    // next: { revalidate: 100 },
+    cache: 'no-store',
   })
   if (!res.ok) {
     throw new Error('Failed to fetch data in server')
@@ -19,10 +18,14 @@ async function fetchNotes() {
   return notes
 }
 
-export default async function NotesList() {
+export default async function NotesListNoStore() {
   const notes = await fetchNotes()
   return (
     <div>
+      <hr />
+      <p className="my-4 pb-3 text-xl font-medium underline underline-offset-4">
+        cache no-store
+      </p>
       <ul className="m-3">
         {notes.map((note) => (
           <li key={note.id}>

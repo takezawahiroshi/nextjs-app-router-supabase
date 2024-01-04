@@ -14,7 +14,7 @@ export default function RouterBtn({
         router.push(`/${destination}`)
       }}
     >
-      Nav to {destination ? destination : 'home'}
+      Nav to {destination ? destination : 'no-store'}
     </button>
   )
 }
